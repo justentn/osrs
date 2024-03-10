@@ -57,7 +57,7 @@ public class StoreLocation
 		}
 		catch (IOException ex)
 		{
-			throw new RuntimeException(ex);
+			logger.warn("unable to initialize cache tmp area", ex);
 		}
 	}
 
@@ -71,30 +71,22 @@ public class StoreLocation
 			return file;
 		}
 
-		try
+		file.mkdir();
+
+		// Copy over files
+		InputStream in = StoreLocation.class.getResourceAsStream("/main_file_cache.dat2");
+		Files.copy(in, new File(file, "main_file_cache.dat2").toPath());
+
+		in = StoreLocation.class.getResourceAsStream("/main_file_cache.idx255");
+		Files.copy(in, new File(file, "main_file_cache.idx255").toPath());
+
+		for (int i = 0; i <= NUM_INDEXES; ++i)
 		{
-			file.mkdir();
-
-			// Copy over files
-			InputStream in = StoreLocation.class.getResourceAsStream("/main_file_cache.dat2");
-			Files.copy(in, new File(file, "main_file_cache.dat2").toPath());
-
-			in = StoreLocation.class.getResourceAsStream("/main_file_cache.idx255");
-			Files.copy(in, new File(file, "main_file_cache.idx255").toPath());
-
-			for (int i = 0; i <= NUM_INDEXES; ++i)
-			{
-				in = StoreLocation.class.getResourceAsStream("/main_file_cache.idx" + i);
-				Files.copy(in, new File(file, "main_file_cache.idx" + i).toPath());
-			}
-
-			logger.info("Set up cache working directory to {}", file);
+			in = StoreLocation.class.getResourceAsStream("/main_file_cache.idx" + i);
+			Files.copy(in, new File(file, "main_file_cache.idx" + i).toPath());
 		}
-		catch (Exception ex)
-		{
-			file.delete();
-			throw ex;
-		}
+
+		logger.info("Set up cache working directory to {}", file);
 
 		return file;
 	}

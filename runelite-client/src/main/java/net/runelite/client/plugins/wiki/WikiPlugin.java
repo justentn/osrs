@@ -182,11 +182,6 @@ public class WikiPlugin extends Plugin
 			vanilla.setHidden(true);
 		}
 
-		if (!config.showWikiMinimapButton())
-		{
-			return;
-		}
-
 		icon = wikiBannerParent.createChild(0, WidgetType.GRAPHIC);
 		icon.setSpriteId(SpriteID.WIKI_DESELECTED);
 		icon.setOriginalX(0);

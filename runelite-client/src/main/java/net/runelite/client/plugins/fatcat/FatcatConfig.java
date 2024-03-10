@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, Henry Darnell <hjdarnel@gmail.com>
+ * Copyright (c) 2019, Tomas Slusny <slusnucky@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,23 +22,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.wiki;
+package net.runelite.client.plugins.fatcat;
 
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup(WikiPlugin.CONFIG_GROUP_KEY)
-public interface WikiConfig extends Config
+@ConfigGroup(FatcatConfig.GROUP)
+public interface FatcatConfig extends Config
 {
+	String GROUP = "Woodcutting";
+
 	@ConfigItem(
-		keyName = "leftClickSearch",
-		name = "Left Click Search",
-		description = "Swap left-click on the Wiki button to Search",
-		position = 1
+		keyName = "WC",
+		name = "WoodCutting",
+		position = 1,
+		description = "Cuts wood"
 	)
-	default boolean leftClickSearch()
-	{
-		return false;
-	}
+	boolean isWoodcutting();
+
+	@ConfigItem(
+			keyName = "Mining",
+			name = "Mining",
+			position = 2,
+			description = "Mines things"
+	)
+	boolean isMining();
 }

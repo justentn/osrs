@@ -40,8 +40,7 @@ public interface PartyConfig extends Config
 	@ConfigItem(
 		keyName = "pings",
 		name = "Pings",
-		description = "Enables party pings.<br>"
-			+ "To ping, hold the ping hotkey down and click on the tile you want to ping.",
+		description = "Enables party pings",
 		position = 1
 	)
 	default boolean pings()
@@ -52,7 +51,7 @@ public interface PartyConfig extends Config
 	@ConfigItem(
 		keyName = "sounds",
 		name = "Sound on ping",
-		description = "Enables sound notification on party ping.",
+		description = "Enables sound notification on party ping",
 		position = 2
 	)
 	default boolean sounds()
@@ -63,7 +62,7 @@ public interface PartyConfig extends Config
 	@ConfigItem(
 		keyName = "recolorNames",
 		name = "Recolor names",
-		description = "Recolor party members names based on unique color hash.",
+		description = "Recolor party members names based on unique color hash",
 		position = 3
 	)
 	default boolean recolorNames()
@@ -74,8 +73,7 @@ public interface PartyConfig extends Config
 	@ConfigItem(
 		keyName = "pingHotkey",
 		name = "Ping hotkey",
-		description = "Key to hold to send a tile ping.<br>"
-			+ "To ping, hold the ping hotkey down and click on the tile you want to ping.",
+		description = "Key to hold to send a tile ping",
 		position = 4
 	)
 	default Keybind pingHotkey()
